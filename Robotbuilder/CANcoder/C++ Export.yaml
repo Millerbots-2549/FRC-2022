@@ -1,0 +1,5 @@
+CANCoder:
+  Defaults: "CustomComponent,None"
+  ClassName: "CANCoder"
+  Declaration: "${ClassName} #variable($Name){$CAN_ID};"
+  Import: "\\#include \"ctre/Phoenix.h\""

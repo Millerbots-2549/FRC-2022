@@ -15,20 +15,22 @@ package frc.robot;
  */
 
 
-//This is for declaring con
+//This is for declaring constants so the code is more clear. For instance, since each motor is
+//identified by a integer, we just contain those integers here and assign them names so the code reads more clearly.
+
 // Format for constants is ALLCAPS with no spaces
 
 public final class Constants {
 
     // Motor Controllers
-    int DRIVEFRONTRIGHT = 4;
-    int DRIVEFRONTLEFT = 5;
-    int DRIVEBACKRIGHT =6;
-    int DRIVEBACKLEFT = 7;
+    public static int DRIVEFRONTRIGHT = 4;
+    public static int DRIVEFRONTLEFT = 5;
+    public static int DRIVEBACKRIGHT =6;
+    public static int DRIVEBACKLEFT = 7;
 
     //Motor groups
-    int DRIVEFRONT = 0;
-    int DRIVEBACK = 1;
+    public static int DRIVERIGHT = 0;
+    public static int DRIVELEFT = 1;
 
     //PCM
 

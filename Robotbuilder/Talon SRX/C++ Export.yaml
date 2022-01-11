@@ -1,0 +1,5 @@
+Talon SRX:
+  Defaults: "CustomComponent,None"
+  ClassName: "WPI_TalonSRX"
+  Declaration: "${ClassName} #variable($Name){$CAN_ID};"
+  Import: "\\#include \"ctre/Phoenix.h\""

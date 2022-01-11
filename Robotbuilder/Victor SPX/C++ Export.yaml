@@ -1,0 +1,5 @@
+Victor SPX:
+  Defaults: "CustomComponent,None"
+  ClassName: "WPI_VictorSPX"
+  Declaration: "${ClassName} #variable($Name){$CAN_ID};"
+  Import: "\\#include \"ctre/Phoenix.h\""
