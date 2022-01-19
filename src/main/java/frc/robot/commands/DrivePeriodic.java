@@ -4,13 +4,15 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DrivetrainSubsystem;
 
 
+
+
 public class DrivePeriodic extends CommandBase {
-    private final DrivetrainSubsystem drivetrainSubsystem = DrivetrainSubsystem.getInstance();
+
 
     public DrivePeriodic() {
         // each subsystem used by the command must be passed into the
         // addRequirements() method (which takes a vararg of Subsystem)
-        addRequirements(this.drivetrainSubsystem);
+        addRequirements(DrivetrainSubsystem.getInstance());
     }
 
     /**
@@ -18,7 +20,7 @@ public class DrivePeriodic extends CommandBase {
      */
     @Override
     public void initialize() {
-
+        DrivetrainSubsystem.motorSafety();
     }
 
     /**
@@ -27,7 +29,7 @@ public class DrivePeriodic extends CommandBase {
      */
     @Override
     public void execute() {
-
+        DrivetrainSubsystem.driveTeleop();
     }
 
     /**
