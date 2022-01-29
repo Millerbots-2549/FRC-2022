@@ -20,14 +20,15 @@ import frc.robot.subsystems.DrivetrainSubsystem;
  */
 public class RobotContainer
 {
-    // The robot's subsystems and commands are defined here...
+   public static final XboxController dCtrl = new XboxController(0);
 
-    public static final XboxController dCtrl = new XboxController(0);
+   double getAxis = dCtrl.getRawAxis(Constants.DRIVEAXIS);
 
+    public Command driveInit;
     /** The container for the robot. Contains subsystems, OI devices, and commands. */
     public RobotContainer()
     {
-        // Configure the button bindings
+        Robot.drive.setDefaultCommand(new DrivePeriodic());
         configureButtonBindings();
     }
     
@@ -49,8 +50,7 @@ public class RobotContainer
      *
      * @return the command to run in autonomous
      */
-//    public Command getAutonomousCommand()
-//    /
-//
-//    }
+    public Command getAutonomousCommand(){
+        return driveInit;
+    }
 }

@@ -23,16 +23,20 @@ package frc.robot;
 public final class Constants {
 
     // Motor Controllers
-    public static int DRIVEFRONTRIGHT = 4;
-    public static int DRIVEFRONTLEFT = 5;
-    public static int DRIVEBACKRIGHT =6;
-    public static int DRIVEBACKLEFT = 7;
+    public static int DRIVEFRONTRIGHT = 3;
+    public static int DRIVEFRONTLEFT = 0;
+    public static int DRIVEBACKRIGHT = 2;
+    public static int DRIVEBACKLEFT = 1;
 
     //Motor groups
     public static int DRIVERIGHT = 0;
     public static int DRIVELEFT = 1;
 
     //PCM
+
+    //Controller
+        //Axis
+    public static int DRIVEAXIS = 0;
 
 
 }

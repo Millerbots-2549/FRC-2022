@@ -1,18 +1,18 @@
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Robot;
+import frc.robot.RobotContainer;
 import frc.robot.subsystems.DrivetrainSubsystem;
-
-
 
 
 public class DrivePeriodic extends CommandBase {
 
 
     public DrivePeriodic() {
-        // each subsystem used by the command must be passed into the
-        // addRequirements() method (which takes a vararg of Subsystem)
-        addRequirements(DrivetrainSubsystem.getInstance());
+        //requires drivetrain
+        addRequirements(Robot.drive);
     }
 
     /**
@@ -20,7 +20,8 @@ public class DrivePeriodic extends CommandBase {
      */
     @Override
     public void initialize() {
-        DrivetrainSubsystem.motorSafety();
+        //I dunno where else to put this
+       Robot.drive.motorSafety();
     }
 
     /**
@@ -29,7 +30,9 @@ public class DrivePeriodic extends CommandBase {
      */
     @Override
     public void execute() {
-        DrivetrainSubsystem.driveTeleop();
+//        runs driveArcade method contained within driveteleop within singleton
+       Robot.drive.driveTeleop();
+        SmartDashboard.putBoolean("cmdrun", true);
     }
 
     /**
@@ -49,7 +52,12 @@ public class DrivePeriodic extends CommandBase {
     @Override
     public boolean isFinished() {
         // TODO: Make this return true when this Command no longer needs to run execute()
-        return false;
+        if(RobotContainer.dCtrl. getAButton() == true) 
+        {
+            return true;
+        }
+        else{return false;}
+  
     }
 
     /**
