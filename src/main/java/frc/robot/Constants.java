@@ -24,15 +24,22 @@ public final class Constants {
 
     // Motor Controllers
     public static int DRIVEFRONTRIGHT = 3;
-    public static int DRIVEFRONTLEFT = 0;
+    public static int DRIVEFRONTLEFT = 13;
     public static int DRIVEBACKRIGHT = 2;
-    public static int DRIVEBACKLEFT = 1;
+    public static int DRIVEBACKLEFT = 12;
+
+    public static int TOPMANIP = 14;
+    public static int BOTMANIP = 15;
 
     //Motor groups
     public static int DRIVERIGHT = 0;
     public static int DRIVELEFT = 1;
 
     //PCM
+    public static int DOUBLENOIDBACK = 0;
+    public static int DOUBLENOIDFRNT = 1;
+    public static int SINGLENOID = 2;
+
 
     //Controller
         //Axis
