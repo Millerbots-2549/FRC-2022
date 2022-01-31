@@ -7,7 +7,6 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 
 import frc.robot.RobotContainer;
-import frc.robot.commands.DrivePeriodic;
 
 
 public class DrivetrainSubsystem extends SubsystemBase {
@@ -31,7 +30,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
 
     public DrivetrainSubsystem() {
 
-        driveRFront = new WPI_TalonSRX(Constants.DRIVEFRONTRIGHT);
+       driveRFront = new WPI_TalonSRX(Constants.DRIVEFRONTRIGHT);
        driveRBack = new WPI_TalonSRX(Constants.DRIVEBACKRIGHT);
        driveLFront = new WPI_TalonSRX(Constants.DRIVEFRONTLEFT);
        driveLBack = new WPI_TalonSRX(Constants.DRIVEBACKLEFT);
@@ -40,7 +39,6 @@ public class DrivetrainSubsystem extends SubsystemBase {
        driveLeft = new MotorControllerGroup(driveLFront, driveLBack);
 
        drivetrain = new DifferentialDrive(driveLeft, driveRight);
-        int j = 1;
 
     }
 
@@ -52,7 +50,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
     }
 
     public void driveTeleop(){
-       drivetrain.arcadeDrive(0.7 * RobotContainer.dCtrl.getLeftX(), -0.7 * RobotContainer.dCtrl.getLeftY());
+       drivetrain.arcadeDrive(RobotContainer.dCtrl.getLeftX(), -RobotContainer.dCtrl.getLeftY());
     }
 }
 
