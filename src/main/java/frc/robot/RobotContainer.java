@@ -8,10 +8,16 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
-
-import frc.robot.commands.DrivePeriodic;
-import frc.robot.commands.ManipulatorCommand;
-
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj2.command.button.POVButton;
+import frc.robot.commands.climb.ClimbExtend;
+import frc.robot.commands.climb.ClimbPiston;
+import frc.robot.commands.climb.ClimbRetract;
+import frc.robot.commands.drive.DrivePeriodic;
+import frc.robot.commands.manip.ManipulatorCommand;
+import frc.robot.commands.manip.RaiseManip;
+import frc.robot.commands.manip.ShootCommand;
+import frc.robot.commands.manip.ShootInverse;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -23,14 +29,25 @@ public class RobotContainer
 {
    public static final XboxController dCtrl = new XboxController(0);
 
-   double getAxis = dCtrl.getRawAxis(Constants.DRIVEAXIS);
-
-    public Command driveInit;
+    double getAxis = dCtrl.getRawAxis(Constants.DRIVEAXIS);
+    JoystickButton A = new JoystickButton(dCtrl, 1);
+    JoystickButton B = new JoystickButton(dCtrl, 2);
+    JoystickButton X = new JoystickButton(dCtrl, 3);
+    JoystickButton Y = new JoystickButton(dCtrl, 4);
+    JoystickButton SELECT = new JoystickButton(dCtrl, 7);
+    POVButton UP = new POVButton(dCtrl, 180);
+    POVButton RIGHT = new POVButton(dCtrl, 90);
+    POVButton DOWN = new POVButton(dCtrl, 0);
+    POVButton LEFT = new POVButton(dCtrl, 270);
+    int shootInvert= 0;
     /** The container for the robot. Contains subsystems, OI devices, and commands. */
     public RobotContainer()
     {
+        //defualt commands
         Robot.drive.setDefaultCommand(new DrivePeriodic());
         Robot.manip.setDefaultCommand(new ManipulatorCommand());
+
+        // do not delete
         configureButtonBindings();
     }
     
@@ -43,8 +60,19 @@ public class RobotContainer
      */
     private void configureButtonBindings()
     {
-        // Add button to command mappings here.
-        // See https://docs.wpilib.org/en/stable/docs/software/commandbased/binding-commands-to-triggers.html
+        //TODO: test robot without this binding
+
+        //toggle binds
+        A.toggleWhenPressed(new RaiseManip());
+        SELECT.toggleWhenPressed(new ClimbPiston());
+        //while binds
+        B.whileHeld(new ShootCommand());
+        X.whileHeld(new ShootInverse());
+        UP.whileHeld(new ClimbExtend());
+        DOWN.whileHeld(new ClimbRetract());
+
+
+
     }
 
     /**
@@ -53,6 +81,6 @@ public class RobotContainer
      * @return the command to run in autonomous
      */
     public Command getAutonomousCommand(){
-        return driveInit;
+        return null;
     }
 }

@@ -28,8 +28,12 @@ public final class Constants {
     public static int DRIVEBACKRIGHT = 2;
     public static int DRIVEBACKLEFT = 12;
 
-    public static int TOPMANIP = 14;
+    public static int SHOOTER = 0;
+    public static int TOPMANIPRIGHT = 14;
     public static int BOTMANIP = 15;
+
+    public static int CLIMBVICTOR = 1;
+    public static int CLIMBTALON = 11;
 
     //Motor groups
     public static int DRIVERIGHT = 0;
@@ -39,10 +43,10 @@ public final class Constants {
     public static int DOUBLENOIDBACK = 0;
     public static int DOUBLENOIDFRNT = 1;
     public static int SINGLENOID = 2;
+    public static int CLIMBNOIDOUT = 4;
+    public static int CLIMBNOIDIN = 3;
 
-
-    //Controller
-        //Axis
+    //controller
     public static int DRIVEAXIS = 0;
 
 

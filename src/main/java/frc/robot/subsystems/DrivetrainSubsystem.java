@@ -11,25 +11,18 @@ import frc.robot.RobotContainer;
 
 public class DrivetrainSubsystem extends SubsystemBase {
 
-    // With eager singleton initialization, any static variables/fields used in the 
-    // constructor must appear before the "INSTANCE" variable so that they are initialized 
-    // before the constructor is called when the "INSTANCE" variable initializes.
-
-    //motors
-    private static WPI_TalonSRX driveRFront;
-    private static WPI_TalonSRX driveRBack ;
-    private static WPI_TalonSRX driveLFront;
-    private static WPI_TalonSRX driveLBack ;
+    //motorcontrollers
+    private static WPI_TalonSRX driveRFront, driveRBack, driveLFront, driveLBack;
 
     //motor control groups
-    private MotorControllerGroup driveRight;
-    private MotorControllerGroup driveLeft ;
+    private MotorControllerGroup driveRight, driveLeft;
 
     //drivetrain object
     public static DifferentialDrive drivetrain;
 
     public DrivetrainSubsystem() {
 
+      //initializing all drivetrain objects
        driveRFront = new WPI_TalonSRX(Constants.DRIVEFRONTRIGHT);
        driveRBack = new WPI_TalonSRX(Constants.DRIVEBACKRIGHT);
        driveLFront = new WPI_TalonSRX(Constants.DRIVEFRONTLEFT);
@@ -40,13 +33,14 @@ public class DrivetrainSubsystem extends SubsystemBase {
 
        drivetrain = new DifferentialDrive(driveLeft, driveRight);
 
-    }
-
+      }
+      
     public void motorSafety(){
        driveRFront.setSafetyEnabled(true);
        driveRBack.setSafetyEnabled(true);
        driveLFront.setSafetyEnabled(true);
        driveLBack.setSafetyEnabled(true);
+
     }
 
     public void driveTeleop(){

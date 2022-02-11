@@ -1,4 +1,4 @@
-package frc.robot.commands;
+package frc.robot.commands.manip;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
@@ -24,18 +24,10 @@ public class ManipulatorCommand extends CommandBase {
   @Override
   public void execute() {
 
-    //Toggles the A button by checking boolean "toggle"
-    if(RobotContainer.dCtrl.getAButtonPressed() && toggle) {toggle = false;}
-    else if(RobotContainer.dCtrl.getAButtonPressed() && toggle == false) {toggle = true;}
-
     SmartDashboard.putBoolean("A Toggle Check", toggle);
 
-    // if(j == 1){Robot.manip.extend();}
-    // else{Robot.manip.release();}
-
-
     double both = RobotContainer.dCtrl.getLeftTriggerAxis()-RobotContainer.dCtrl.getRightTriggerAxis();
-    Robot.manip.shoot(both);
+    Robot.manip.spin(0.8*Math.pow(both, 3));
 
   }
 
