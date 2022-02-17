@@ -6,7 +6,6 @@ package frc.robot.commands.manip;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
-import frc.robot.RobotContainer;
 
 public class ShootCommand extends CommandBase {
   /** Creates a new ShootCommand. */

@@ -28,18 +28,24 @@ import frc.robot.commands.manip.ShootInverse;
 public class RobotContainer
 {
    public static final XboxController dCtrl = new XboxController(0);
+   public static final XboxController mCtrl = new XboxController(1);
 
+   //dCtrl = drive controller
     double getAxis = dCtrl.getRawAxis(Constants.DRIVEAXIS);
-    JoystickButton A = new JoystickButton(dCtrl, 1);
-    JoystickButton B = new JoystickButton(dCtrl, 2);
-    JoystickButton X = new JoystickButton(dCtrl, 3);
-    JoystickButton Y = new JoystickButton(dCtrl, 4);
-    JoystickButton SELECT = new JoystickButton(dCtrl, 7);
-    POVButton UP = new POVButton(dCtrl, 180);
-    POVButton RIGHT = new POVButton(dCtrl, 90);
-    POVButton DOWN = new POVButton(dCtrl, 0);
-    POVButton LEFT = new POVButton(dCtrl, 270);
+    JoystickButton dY = new JoystickButton(dCtrl, 4);
+    JoystickButton dSELECT = new JoystickButton(dCtrl, 7);
+    POVButton dUP = new POVButton(dCtrl, 180);
+    POVButton dRIGHT = new POVButton(dCtrl, 90);
+    POVButton dDOWN = new POVButton(dCtrl, 0);
+    POVButton dLEFT = new POVButton(dCtrl, 270);
     int shootInvert= 0;
+
+    //mCtrl = manipulator controller
+    JoystickButton mA = new JoystickButton(mCtrl, 1);
+    JoystickButton mB = new JoystickButton(mCtrl, 2);
+    JoystickButton mX = new JoystickButton(mCtrl, 3);
+
+
     /** The container for the robot. Contains subsystems, OI devices, and commands. */
     public RobotContainer()
     {
@@ -60,16 +66,14 @@ public class RobotContainer
      */
     private void configureButtonBindings()
     {
-        //TODO: test robot without this binding
-
         //toggle binds
-        A.toggleWhenPressed(new RaiseManip());
-        SELECT.toggleWhenPressed(new ClimbPiston());
+        mA.toggleWhenPressed(new RaiseManip());
+        dSELECT.toggleWhenPressed(new ClimbPiston());
         //while binds
-        B.whileHeld(new ShootCommand());
-        X.whileHeld(new ShootInverse());
-        UP.whileHeld(new ClimbExtend());
-        DOWN.whileHeld(new ClimbRetract());
+        mB.whileHeld(new ShootCommand());
+        mX.whileHeld(new ShootInverse());
+        dUP.whileHeld(new ClimbExtend());
+        dDOWN.whileHeld(new ClimbRetract());
 
 
 
