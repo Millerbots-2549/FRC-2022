@@ -10,14 +10,10 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
-import frc.robot.commands.climb.ClimbExtend;
-import frc.robot.commands.climb.ClimbPiston;
-import frc.robot.commands.climb.ClimbRetract;
-import frc.robot.commands.drive.DrivePeriodic;
-import frc.robot.commands.manip.ManipulatorCommand;
-import frc.robot.commands.manip.RaiseManip;
-import frc.robot.commands.manip.ShootCommand;
-import frc.robot.commands.manip.ShootInverse;
+import frc.robot.commands.manip.*;
+import frc.robot.commands.drive.*;
+import frc.robot.commands.climb.*;
+
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -44,6 +40,9 @@ public class RobotContainer
     JoystickButton mA = new JoystickButton(mCtrl, 1);
     JoystickButton mB = new JoystickButton(mCtrl, 2);
     JoystickButton mX = new JoystickButton(mCtrl, 3);
+    JoystickButton mY = new JoystickButton(mCtrl, 4);
+    JoystickButton mLB = new JoystickButton(mCtrl, 5);
+    JoystickButton mRB = new JoystickButton(mCtrl, 6);
 
 
     /** The container for the robot. Contains subsystems, OI devices, and commands. */
@@ -70,12 +69,13 @@ public class RobotContainer
         mA.toggleWhenPressed(new RaiseManip());
         dSELECT.toggleWhenPressed(new ClimbPiston());
         //while binds
-        mB.whileHeld(new ShootCommand());
-        mX.whileHeld(new ShootInverse());
+        mRB.whileHeld(new ShootCommand());
+        mLB.whileHeld(new ShootInverse());
+        mX.whileHeld(new ShootOneLow());
+        mB.whileHeld(new ShootTwoLow());
+        mY.whileHeld(new ShootOneHigh());
         dUP.whileHeld(new ClimbExtend());
         dDOWN.whileHeld(new ClimbRetract());
-
-
 
     }
 
