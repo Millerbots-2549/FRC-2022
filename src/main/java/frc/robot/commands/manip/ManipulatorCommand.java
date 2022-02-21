@@ -26,7 +26,8 @@ public class ManipulatorCommand extends CommandBase {
 
     SmartDashboard.putBoolean("A Toggle Check", toggle);
 
-    double both = RobotContainer.dCtrl.getLeftTriggerAxis()-RobotContainer.dCtrl.getRightTriggerAxis();
+    double both = (RobotContainer.mCtrl.getLeftTriggerAxis() + RobotContainer.dCtrl.getLeftTriggerAxis()) -RobotContainer.mCtrl.getRightTriggerAxis();
+    if (both > 1){both = 1;}
     Robot.manip.spin(both);
 
   }
