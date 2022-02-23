@@ -28,6 +28,7 @@ public class RobotContainer
 
    //dCtrl = drive controller
     double getAxis = dCtrl.getRawAxis(Constants.DRIVEAXIS);
+    JoystickButton dA = new JoystickButton(dCtrl, 1);
     JoystickButton dY = new JoystickButton(dCtrl, 4);
     JoystickButton dSELECT = new JoystickButton(dCtrl, 7);
     POVButton dUP = new POVButton(dCtrl, 180);
@@ -67,6 +68,7 @@ public class RobotContainer
     {
         //toggle binds
         mA.toggleWhenPressed(new RaiseManip());
+        dA.toggleWhenPressed(new RaiseManip());
         dSELECT.toggleWhenPressed(new ClimbPiston());
         //while binds
         mRB.whileHeld(new ShootCommand());
