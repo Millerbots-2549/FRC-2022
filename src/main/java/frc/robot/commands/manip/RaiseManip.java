@@ -4,6 +4,7 @@
 
 package frc.robot.commands.manip;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
@@ -17,7 +18,9 @@ public class RaiseManip extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    Robot.manip.manipUp();
+    if (Robot.manip.getManipUp() != DoubleSolenoid.Value.kForward) {
+      Robot.manip.manipUp();
+    }
   }
 
   // Called every time the scheduler runs while the command is scheduled.

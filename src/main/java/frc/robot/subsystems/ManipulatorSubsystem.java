@@ -63,4 +63,8 @@ public class ManipulatorSubsystem extends SubsystemBase {
     spinTop.setSafetyEnabled(true);
     spinBot.setSafetyEnabled(true);
   }
+
+  public DoubleSolenoid.Value getManipUp(){
+    return doubleNoid.get();
+  }
 }
