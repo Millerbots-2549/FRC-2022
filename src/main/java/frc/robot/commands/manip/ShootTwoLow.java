@@ -19,7 +19,7 @@ public class ShootTwoLow extends CommandBase {
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {Robot.manip.spin(-.70);}
+  public void execute() {Robot.manip.spin(-.725);}
 
   // Called once the command ends or is interrupted.
   @Override
