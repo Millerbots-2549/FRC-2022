@@ -42,9 +42,8 @@ public final class Constants {
     //PCM
     public static int DOUBLENOIDBACK = 0;
     public static int DOUBLENOIDFRNT = 1;
-    public static int SINGLENOID = 2;
-    public static int CLIMBNOIDOUT = 4;
-    public static int CLIMBNOIDIN = 3;
+    public static int CLIMBNOIDOUT = 3;
+    public static int CLIMBNOIDIN = 2;
 
     //controller
     public static int DRIVEAXIS = 0;
