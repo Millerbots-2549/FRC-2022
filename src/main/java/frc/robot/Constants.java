@@ -32,7 +32,9 @@ public final class Constants {
     public static int TOPMANIPRIGHT = 14;
     public static int BOTMANIP = 15;
 
-    public static int CLIMBVICTOR = 1;
+    public static int CLIMBEXTENDER = 1;
+    public static int CLIMBRETRACTOR = 9;
+    public static int CLIMBSPINTALON = 1;
     public static int CLIMBTALON = 11;
 
     //Motor groups
@@ -44,6 +46,10 @@ public final class Constants {
     public static int DOUBLENOIDFRNT = 1;
     public static int CLIMBNOIDOUT = 3;
     public static int CLIMBNOIDIN = 2;
+    public static int SHOOTNOIDIN = 4;
+    public static int SHOOTNOIDOUT = 5;
+    public static int SHOOTNOIDTWOOUT = 6;
+    public static int SHOOTNOIDTWOIN = 7;
 
     //controller
     public static int DRIVEAXIS = 0;

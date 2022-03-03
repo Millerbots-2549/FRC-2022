@@ -16,12 +16,14 @@ import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 public class ClimbSubsystem extends SubsystemBase {
 
   private WPI_VictorSPX climbExtend;
+  private WPI_TalonSRX climbRetract;
   private WPI_TalonSRX climbSpin;
 
   private DoubleSolenoid climbPiston;
 
   public ClimbSubsystem() {
-    climbExtend = new WPI_VictorSPX(Constants.CLIMBVICTOR);
+    climbExtend = new WPI_VictorSPX(Constants.CLIMBEXTENDER);
+    climbRetract = new WPI_TalonSRX(Constants.CLIMBRETRACTOR);
     climbSpin = new WPI_TalonSRX(Constants.CLIMBTALON);
     
     climbPiston = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, Constants.CLIMBNOIDOUT, Constants.CLIMBNOIDIN);
@@ -32,18 +34,20 @@ public class ClimbSubsystem extends SubsystemBase {
     // This method will be called once per scheduler run
   }
 
-  public void extendMotor(double speed){
+  public void extend(double speed){
     climbExtend.set(speed);
   }
 
-  public void extendMotorStop(){
-    climbExtend.set(0);
+  public void retract(double speed){
+    climbRetract.set(speed);
   }
 
-  public void climbExec(double speed){
-    climbSpin.set(speed);
+  public void climbSpinFwd(){
+    climbSpin.set(1);
   }
-
+  public void climbSpinBck(){
+    climbSpin.set(-1);
+  }
   public void climbEnd() {
     climbSpin.set(0);
   }

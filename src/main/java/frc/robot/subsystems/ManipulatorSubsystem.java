@@ -10,6 +10,8 @@ import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
+import java.security.CodeSigner;
+
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
@@ -17,8 +19,9 @@ public class ManipulatorSubsystem extends SubsystemBase {
 
   public WPI_TalonSRX spinTop, spinBot;
   public WPI_VictorSPX shoot;
-  // public Solenoid noid;
   public DoubleSolenoid doubleNoid;
+  public DoubleSolenoid ballNoid1;
+  public DoubleSolenoid ballNoid2;
   
   public ManipulatorSubsystem() {
 
@@ -29,6 +32,8 @@ public class ManipulatorSubsystem extends SubsystemBase {
 
     // noid = new Solenoid(PneumaticsModuleType.CTREPCM, Constants.SINGLENOID);
     doubleNoid = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, Constants.DOUBLENOIDFRNT, Constants.DOUBLENOIDBACK);
+    ballNoid1 = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, Constants.SHOOTNOIDIN, Constants.SHOOTNOIDOUT);
+    ballNoid2 = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, Constants.SHOOTNOIDTWOIN, Constants.SHOOTNOIDTWOOUT);
 
   }
 
@@ -37,26 +42,49 @@ public class ManipulatorSubsystem extends SubsystemBase {
     // This method will be called once per scheduler run
   }
 
-  public void spin(double speed){
-    spinTop.set(speed);
-    spinBot.set(speed);
-  }
 
+
+  //shooter motor methods
   public void shootStart(int speed){
     shoot.set(speed);
   }
   public void shootEnd(){
     shoot.set(0);
   }
+  public void spin(double speed){
+    spinTop.set(speed);
+    spinBot.set(speed);
+  }
 
+  //raise and lower manipulator methods
   public void manipUp(){
     // noid.set(true);
     doubleNoid.set(Value.kReverse);
   }
-
   public void manipDown(){
     // noid.set(false);
     doubleNoid.set(Value.kForward);
+  }
+
+  //Ball Noid 1 Methods
+  public void ball1In(){
+    ballNoid1.set(Value.kReverse);
+  }
+  public void ball1Off(){
+    ballNoid1.set(Value.kOff);
+  }
+  public void ball1Out(){
+    ballNoid1.set(Value.kForward);
+  }
+  //Ball Noid 2 Methods
+  public void ball2In(){
+    ballNoid2.set(Value.kReverse);
+  }
+  public void ball2Off(){
+    ballNoid2.set(Value.kOff);
+  }
+  public void ball2Out(){
+    ballNoid2.set(Value.kForward);
   }
 
   public void motorSafety(){
@@ -64,6 +92,7 @@ public class ManipulatorSubsystem extends SubsystemBase {
     spinBot.setSafetyEnabled(true);
   }
 
+  //get values
   public DoubleSolenoid.Value getManipUp(){
     return doubleNoid.get();
   }

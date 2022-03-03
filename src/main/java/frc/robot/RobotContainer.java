@@ -11,8 +11,15 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
 import frc.robot.commands.manip.*;
+import frc.robot.commands.manip.shootpresets.ShootOneHigh;
+import frc.robot.commands.manip.shootpresets.ShootOneLow;
+import frc.robot.commands.manip.shootpresets.ShootTwoLow;
+import frc.robot.commands.manip.shootsolenoid.ShootLeft;
+import frc.robot.commands.manip.shootsolenoid.ShootRight;
 import frc.robot.commands.drive.*;
 import frc.robot.commands.climb.*;
+import frc.robot.commands.climb.climbspinner.ClimbSpinBck;
+import frc.robot.commands.climb.climbspinner.ClimbSpinFwd;
 
 
 /**
@@ -31,6 +38,8 @@ public class RobotContainer
     JoystickButton dA = new JoystickButton(dCtrl, 1);
     JoystickButton dY = new JoystickButton(dCtrl, 4);
     JoystickButton dSELECT = new JoystickButton(dCtrl, 7);
+    JoystickButton dLB = new JoystickButton(dCtrl, 5);
+    JoystickButton dRB = new JoystickButton(dCtrl, 6);
     POVButton dUP = new POVButton(dCtrl, 180);
     POVButton dRIGHT = new POVButton(dCtrl, 90);
     POVButton dDOWN = new POVButton(dCtrl, 0);
@@ -44,6 +53,10 @@ public class RobotContainer
     JoystickButton mY = new JoystickButton(mCtrl, 4);
     JoystickButton mLB = new JoystickButton(mCtrl, 5);
     JoystickButton mRB = new JoystickButton(mCtrl, 6);
+    POVButton mUP = new POVButton(mCtrl, 180);
+    POVButton mRIGHT = new POVButton(mCtrl, 90);
+    POVButton mDOWN = new POVButton(mCtrl, 0);
+    POVButton mLEFT = new POVButton(mCtrl, 270);
 
 
     /** The container for the robot. Contains subsystems, OI devices, and commands. */
@@ -76,9 +89,12 @@ public class RobotContainer
         mX.whileHeld(new ShootOneLow());
         mB.whileHeld(new ShootTwoLow());
         mY.whileHeld(new ShootOneHigh());
+        mRIGHT.whileHeld(new ShootRight());
+        mLEFT.whileHeld(new ShootLeft());
         dUP.whileHeld(new ClimbExtend());
         dDOWN.whileHeld(new ClimbRetract());
-
+        dLB.whileHeld(new ClimbSpinBck());
+        dRB.whileHeld(new ClimbSpinFwd());
     }
 
     /**
