@@ -12,12 +12,13 @@ import frc.robot.Constants;
 
 import java.security.CodeSigner;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 public class ManipulatorSubsystem extends SubsystemBase {
 
-  public WPI_TalonSRX spinTop, spinBot;
+  public WPI_TalonFX spinTop, spinBot;
   public WPI_VictorSPX shoot;
   public DoubleSolenoid doubleNoid;
   public DoubleSolenoid ballNoid1;
@@ -26,9 +27,9 @@ public class ManipulatorSubsystem extends SubsystemBase {
   public ManipulatorSubsystem() {
 
     //shooter motors
-    spinTop = new WPI_TalonSRX(Constants.TOPMANIPRIGHT);
+    spinTop = new WPI_TalonFX(Constants.TOPMANIPRIGHT);
     shoot = new WPI_VictorSPX(Constants.SHOOTER);
-    spinBot = new WPI_TalonSRX(Constants.BOTMANIP);
+    spinBot = new WPI_TalonFX(Constants.BOTMANIP);
 
     // noid = new Solenoid(PneumaticsModuleType.CTREPCM, Constants.SINGLENOID);
     doubleNoid = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, Constants.DOUBLENOIDFRNT, Constants.DOUBLENOIDBACK);

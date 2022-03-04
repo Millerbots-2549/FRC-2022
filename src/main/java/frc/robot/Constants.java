@@ -29,8 +29,8 @@ public final class Constants {
     public static int DRIVEBACKLEFT = 12;
 
     public static int SHOOTER = 0;
-    public static int TOPMANIPRIGHT = 14;
-    public static int BOTMANIP = 15;
+    public static int TOPMANIPRIGHT = 0;
+    public static int BOTMANIP = 1;
 
     public static int CLIMBEXTENDER = 1;
     public static int CLIMBRETRACTOR = 9;
