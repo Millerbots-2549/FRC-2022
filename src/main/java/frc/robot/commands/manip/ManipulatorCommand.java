@@ -28,7 +28,7 @@ public class ManipulatorCommand extends CommandBase {
 
     double both = (RobotContainer.mCtrl.getLeftTriggerAxis() + RobotContainer.dCtrl.getLeftTriggerAxis()) -RobotContainer.mCtrl.getRightTriggerAxis();
     if (both > 1){both = 1;}
-    Robot.manip.spin(both);
+    Robot.manip.spin(-both);
 
   }
 

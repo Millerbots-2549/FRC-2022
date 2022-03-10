@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.PowerDistribution.ModuleType;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.wpilibj.PneumaticHub;
 import edu.wpi.first.wpilibj.PneumaticsControlModule;
 import edu.wpi.first.wpilibj.PowerDistribution;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
@@ -31,7 +32,8 @@ public class Robot extends TimedRobot
     public static ManipulatorSubsystem manip;
     public static ClimbSubsystem climb;
     public static PneumaticsControlModule pcm;
-    public static PowerDistribution pdp;
+   // public static PowerDistribution pdp;
+    public static PneumaticHub phub;
 
     /**
      * This method is run when the robot is first started up and should be used for any
@@ -47,8 +49,8 @@ public class Robot extends TimedRobot
         manip = new ManipulatorSubsystem();
         robotContainer = new RobotContainer();
         climb = new ClimbSubsystem();
-        pcm = new PneumaticsControlModule();
-        pdp = new PowerDistribution(0, ModuleType.kCTRE);
+        phub= new PneumaticHub();
+        PowerDistribution pdp = new PowerDistribution(0, ModuleType.kCTRE);
         
 
     }

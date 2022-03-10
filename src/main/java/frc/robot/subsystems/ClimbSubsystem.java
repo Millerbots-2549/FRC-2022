@@ -26,7 +26,7 @@ public class ClimbSubsystem extends SubsystemBase {
     climbRetract = new WPI_TalonSRX(Constants.CLIMBRETRACTOR);
     climbSpin = new WPI_TalonSRX(Constants.CLIMBTALON);
     
-    climbPiston = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, Constants.CLIMBNOIDOUT, Constants.CLIMBNOIDIN);
+    climbPiston = new DoubleSolenoid(PneumaticsModuleType.REVPH, Constants.CLIMBNOIDOUT, Constants.CLIMBNOIDIN);
   }
 
   @Override

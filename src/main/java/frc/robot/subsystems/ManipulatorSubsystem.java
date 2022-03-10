@@ -32,9 +32,9 @@ public class ManipulatorSubsystem extends SubsystemBase {
     spinBot = new WPI_TalonFX(Constants.BOTMANIP);
 
     // noid = new Solenoid(PneumaticsModuleType.CTREPCM, Constants.SINGLENOID);
-    doubleNoid = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, Constants.DOUBLENOIDFRNT, Constants.DOUBLENOIDBACK);
-    ballNoid1 = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, Constants.SHOOTNOIDIN, Constants.SHOOTNOIDOUT);
-    ballNoid2 = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, Constants.SHOOTNOIDTWOIN, Constants.SHOOTNOIDTWOOUT);
+    doubleNoid = new DoubleSolenoid(PneumaticsModuleType.REVPH, Constants.DOUBLENOIDFRNT, Constants.DOUBLENOIDBACK);
+    ballNoid1 = new DoubleSolenoid(PneumaticsModuleType.REVPH, Constants.SHOOTNOIDIN, Constants.SHOOTNOIDOUT);
+    ballNoid2 = new DoubleSolenoid(PneumaticsModuleType.REVPH, Constants.SHOOTNOIDTWOIN, Constants.SHOOTNOIDTWOOUT);
 
   }
 
