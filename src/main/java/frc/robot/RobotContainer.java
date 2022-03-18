@@ -17,6 +17,7 @@ import frc.robot.commands.manip.shootpresets.ShootTwoLow;
 import frc.robot.commands.manip.shootsolenoid.ShootLeft;
 import frc.robot.commands.manip.shootsolenoid.ShootRight;
 import frc.robot.commands.drive.*;
+import frc.robot.commands.auto.AutoComplex;
 import frc.robot.commands.climb.*;
 import frc.robot.commands.climb.climbspinner.ClimbSpinBck;
 import frc.robot.commands.climb.climbspinner.ClimbSpinFwd;
@@ -38,6 +39,7 @@ public class RobotContainer
     JoystickButton dA = new JoystickButton(dCtrl, 1);
     JoystickButton dY = new JoystickButton(dCtrl, 4);
     JoystickButton dSELECT = new JoystickButton(dCtrl, 7);
+    JoystickButton dSTART = new JoystickButton(dCtrl, 8);
     JoystickButton dLB = new JoystickButton(dCtrl, 5);
     JoystickButton dRB = new JoystickButton(dCtrl, 6);
     POVButton dUP = new POVButton(dCtrl, 180);
@@ -80,19 +82,29 @@ public class RobotContainer
     private void configureButtonBindings()
     {
         //toggle binds
+            //button on each controller to toggle the position of the manipulator
         mA.toggleWhenPressed(new RaiseManip());
         dA.toggleWhenPressed(new RaiseManip());
-        dSELECT.toggleWhenPressed(new ClimbPiston());
+            // controls the two pistons on the climb apendage with the same command
+        dSELECT.toggleWhenPressed(new ClimbPiston(1));
+        dSTART.toggleWhenPressed(new ClimbPiston(2));
         //while binds
+            //two commands that spin the shooting churro in and out
         mRB.whileHeld(new ShootCommand());
         mLB.whileHeld(new ShootInverse());
+            //Presets for shooting
+            //TODO: make all of the presets run out of a single command
         mX.whileHeld(new ShootOneLow());
         mB.whileHeld(new ShootTwoLow());
         mY.whileHeld(new ShootOneHigh());
+            //controls the pistons that push balls into the shooting mechanism
         mRIGHT.whileHeld(new ShootRight());
         mLEFT.whileHeld(new ShootLeft());
+            //depricated commands that raised and lowered old climb
+            //TODO:update this to work with the new climb system
         dUP.whileHeld(new ClimbExtend());
         dDOWN.whileHeld(new ClimbRetract());
+            //controls the motors that spin the climb system
         dLB.whileHeld(new ClimbSpinBck());
         dRB.whileHeld(new ClimbSpinFwd());
     }
@@ -103,6 +115,6 @@ public class RobotContainer
      * @return the command to run in autonomous
      */
     public Command getAutonomousCommand(){
-        return null;
+        return(new AutoComplex());
     }
 }

@@ -28,14 +28,14 @@ public final class Constants {
     public static int DRIVEBACKRIGHT = 2;
     public static int DRIVEBACKLEFT = 12;
 
-    public static int SHOOTER = 0;
+    public static int SHOOTER = 10; // talonsrx
     public static int TOPMANIPRIGHT = 0;
     public static int BOTMANIP = 1;
 
     public static int CLIMBEXTENDER = 1;
     public static int CLIMBRETRACTOR = 9;
     public static int CLIMBSPINTALON = 1;
-    public static int CLIMBTALON = 11;
+    public static int CLIMBVCTOR = 0;
 
     //Motor groups
     public static int DRIVERIGHT = 0;
@@ -50,9 +50,14 @@ public final class Constants {
     public static int SHOOTNOIDOUT = 5;
     public static int SHOOTNOIDTWOOUT = 6;
     public static int SHOOTNOIDTWOIN = 7;
+    public static int CLIMBNOIDTWOOUT = 8;
+    public static int CLIMBNOIDTWOIN = 9;
 
     //controller
     public static int DRIVEAXIS = 0;
 
+    //auto
+    public static double DRIVETIME = 1.4;
+    public static double DRIVESPEED = 0.7;
 
 }

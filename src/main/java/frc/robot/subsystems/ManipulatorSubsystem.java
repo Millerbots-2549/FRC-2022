@@ -19,7 +19,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 public class ManipulatorSubsystem extends SubsystemBase {
 
   public WPI_TalonFX spinTop, spinBot;
-  public WPI_VictorSPX shoot;
+  public WPI_TalonSRX shoot;
   public DoubleSolenoid doubleNoid;
   public DoubleSolenoid ballNoid1;
   public DoubleSolenoid ballNoid2;
@@ -28,7 +28,7 @@ public class ManipulatorSubsystem extends SubsystemBase {
 
     //shooter motors
     spinTop = new WPI_TalonFX(Constants.TOPMANIPRIGHT);
-    shoot = new WPI_VictorSPX(Constants.SHOOTER);
+    shoot = new WPI_TalonSRX(Constants.SHOOTER);
     spinBot = new WPI_TalonFX(Constants.BOTMANIP);
 
     // noid = new Solenoid(PneumaticsModuleType.CTREPCM, Constants.SINGLENOID);
@@ -46,8 +46,8 @@ public class ManipulatorSubsystem extends SubsystemBase {
 
 
   //shooter motor methods
-  public void shootStart(int speed){
-    shoot.set(speed);
+  public void shootStart(double d){
+    shoot.set(d);
   }
   public void shootEnd(){
     shoot.set(0);
