@@ -50,8 +50,8 @@ public final class Constants {
     public static int SHOOTNOIDOUT = 5;
     public static int SHOOTNOIDTWOOUT = 6;
     public static int SHOOTNOIDTWOIN = 7;
-    public static int CLIMBNOIDTWOOUT = 8;
-    public static int CLIMBNOIDTWOIN = 9;
+    public static int CLIMBNOIDTWOOUT = 0;
+    public static int CLIMBNOIDTWOIN = 1;
 
     //controller
     public static int DRIVEAXIS = 0;

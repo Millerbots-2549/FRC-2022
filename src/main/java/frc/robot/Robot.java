@@ -33,9 +33,9 @@ public class Robot extends TimedRobot
     public static DrivetrainSubsystem drive;
     public static ManipulatorSubsystem manip;
     public static ClimbSubsystem climb;
-    public static PneumaticsControlModule pcm;
-   // public static PowerDistribution pdp;
-    public static PneumaticHub phub;
+    public static PneumaticHub pcm;
+    public static PowerDistribution pdp;
+    //public static PneumaticHub phub;
 
     /**
      * This method is run when the robot is first started up and should be used for any
@@ -51,7 +51,7 @@ public class Robot extends TimedRobot
         manip = new ManipulatorSubsystem();
         robotContainer = new RobotContainer();
         climb = new ClimbSubsystem();
-        phub= new PneumaticHub();
+        pcm= new PneumaticHub();
         PowerDistribution pdp = new PowerDistribution(0, ModuleType.kCTRE);
         
 
