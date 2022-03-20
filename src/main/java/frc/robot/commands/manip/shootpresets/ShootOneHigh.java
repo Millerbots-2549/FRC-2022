@@ -19,7 +19,10 @@ public class ShootOneHigh extends CommandBase {
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {Robot.manip.spin(.75);}
+  public void execute() {
+    Robot.manip.velocity(15625);
+    //Robot.manip.spin(.75);
+  }
 
   // Called once the command ends or is interrupted.
   @Override

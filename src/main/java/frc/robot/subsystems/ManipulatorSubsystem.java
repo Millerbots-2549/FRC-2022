@@ -12,6 +12,7 @@ import frc.robot.Constants;
 
 import java.security.CodeSigner;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
@@ -28,8 +29,16 @@ public class ManipulatorSubsystem extends SubsystemBase {
 
     //shooter motors
     spinTop = new WPI_TalonFX(Constants.TOPMANIPRIGHT);
+    spinTop.config_kP(0,.08999276);
+    spinTop.config_kF(0,0.0446200371);
+    spinTop.config_kD(0,0.09999991);
+    spinTop.config_kI(0,0);
     shoot = new WPI_TalonSRX(Constants.SHOOTER);
     spinBot = new WPI_TalonFX(Constants.BOTMANIP);
+    spinBot.config_kP(0,.08999276);
+    spinBot.config_kF(0,0.0446200371);
+    spinBot.config_kD(0,0.09999991);
+    spinBot.config_kI(0,0);
 
     // noid = new Solenoid(PneumaticsModuleType.CTREPCM, Constants.SINGLENOID);
     doubleNoid = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, Constants.DOUBLENOIDFRNT, Constants.DOUBLENOIDBACK);
@@ -56,7 +65,11 @@ public class ManipulatorSubsystem extends SubsystemBase {
     spinTop.set(speed);
     spinBot.set(speed);
   }
+public void velocity(double velo){
+ spinTop.set(ControlMode.Velocity,velo);
+ spinBot.set(ControlMode.Velocity,velo);
 
+}
   //raise and lower manipulator methods
   public void manipUp(){
     // noid.set(true);
