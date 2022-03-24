@@ -67,7 +67,7 @@ public class ManipulatorSubsystem extends SubsystemBase {
   }
 public void velocity(double velo){
  spinTop.set(ControlMode.Velocity,velo);
- spinBot.set(ControlMode.Velocity,velo);
+ spinBot.set(ControlMode.Velocity,velo + 200);
 
 }
   //raise and lower manipulator methods

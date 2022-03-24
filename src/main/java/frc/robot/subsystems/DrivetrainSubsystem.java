@@ -44,7 +44,12 @@ public class DrivetrainSubsystem extends SubsystemBase {
     }
 
     public void driveTeleop(){
-       drivetrain.arcadeDrive(RobotContainer.dCtrl.getLeftX(), -RobotContainer.dCtrl.getLeftY());
+      if(RobotContainer.dCtrl.getRightTriggerAxis() < .3) {
+        drivetrain.arcadeDrive(RobotContainer.dCtrl.getLeftX() *0.7, -RobotContainer.dCtrl.getLeftY()*0.7);
+      }
+      else{
+        drivetrain.arcadeDrive(RobotContainer.dCtrl.getLeftX(), -RobotContainer.dCtrl.getLeftY());
+      }
     }
 
     public void driveTimed(double speed,double rotation){

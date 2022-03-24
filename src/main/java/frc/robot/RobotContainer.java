@@ -83,7 +83,7 @@ public class RobotContainer
     {
         //toggle binds
             //button on each controller to toggle the position of the manipulator
-        mA.toggleWhenPressed(new RaiseManip());
+        // mA.toggleWhenPressed(new RaiseManip());
         dA.toggleWhenPressed(new RaiseManip());
             // controls the two pistons on the climb apendage with the same command
         dSELECT.toggleWhenPressed(new ClimbPiston(1));

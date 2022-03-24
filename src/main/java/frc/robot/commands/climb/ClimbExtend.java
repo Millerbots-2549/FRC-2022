@@ -15,7 +15,7 @@ public class ClimbExtend extends CommandBase {
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {Robot.climb.extend(1);}
+  public void initialize() {Robot.climb.extend(-1);}
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
