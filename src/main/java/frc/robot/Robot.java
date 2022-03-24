@@ -33,7 +33,7 @@ public class Robot extends TimedRobot
     public static DrivetrainSubsystem drive;
     public static ManipulatorSubsystem manip;
     public static ClimbSubsystem climb;
-    public static PneumaticHub pcm;
+    public static PneumaticsControlModule pcm;
     public static PowerDistribution pdp;
     //public static PneumaticHub phub;
 
@@ -51,7 +51,7 @@ public class Robot extends TimedRobot
         manip = new ManipulatorSubsystem();
         robotContainer = new RobotContainer();
         climb = new ClimbSubsystem();
-        pcm= new PneumaticHub();
+        pcm = new PneumaticsControlModule();
         PowerDistribution pdp = new PowerDistribution(0, ModuleType.kCTRE);
         
 
