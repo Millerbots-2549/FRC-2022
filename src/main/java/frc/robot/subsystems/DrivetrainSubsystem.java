@@ -44,11 +44,11 @@ public class DrivetrainSubsystem extends SubsystemBase {
     }
 
     public void driveTeleop(){
-      if(RobotContainer.dCtrl.getRightTriggerAxis() < .3) {
-        drivetrain.arcadeDrive(RobotContainer.dCtrl.getLeftX() *0.7, -RobotContainer.dCtrl.getLeftY()*0.7);
+      if(RobotContainer.dCtrl.getRightTriggerAxis() > .3) {
+        drivetrain.arcadeDrive(RobotContainer.dCtrl.getLeftX() * 0.7, -RobotContainer.dCtrl.getLeftY() * 0.7);
       }
       else{
-        drivetrain.arcadeDrive(RobotContainer.dCtrl.getLeftX(), -RobotContainer.dCtrl.getLeftY());
+        drivetrain.arcadeDrive(RobotContainer.dCtrl.getLeftX() * 0.9, -RobotContainer.dCtrl.getLeftY() * 0.9);
       }
     }
 

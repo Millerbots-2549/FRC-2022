@@ -7,15 +7,18 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 import java.security.CodeSigner;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+import com.fasterxml.jackson.databind.node.BooleanNode;
 
 public class ManipulatorSubsystem extends SubsystemBase {
 
@@ -24,17 +27,22 @@ public class ManipulatorSubsystem extends SubsystemBase {
   public DoubleSolenoid doubleNoid;
   public DoubleSolenoid ballNoid1;
   public DoubleSolenoid ballNoid2;
+
+  public double shoot1Encoder;
+  public double shoot2Encoder;
   
   public ManipulatorSubsystem() {
 
     //shooter motors
     spinTop = new WPI_TalonFX(Constants.TOPMANIPRIGHT);
+    spinTop.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor);
     spinTop.config_kP(0,.08999276);
     spinTop.config_kF(0,0.0446200371);
     spinTop.config_kD(0,0.09999991);
     spinTop.config_kI(0,0);
     shoot = new WPI_TalonSRX(Constants.SHOOTER);
     spinBot = new WPI_TalonFX(Constants.BOTMANIP);
+    spinBot.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor);
     spinBot.config_kP(0,.08999276);
     spinBot.config_kF(0,0.0446200371);
     spinBot.config_kD(0,0.09999991);
@@ -49,7 +57,8 @@ public class ManipulatorSubsystem extends SubsystemBase {
 
   @Override
   public void periodic() {
-    // This method will be called once per scheduler run
+    SmartDashboard.putNumber("Top Velocity", spinTop.getSelectedSensorVelocity(1));
+    SmartDashboard.putNumber("Bot Velocity", spinBot.getSelectedSensorVelocity(1));
   }
 
 
@@ -67,6 +76,7 @@ public class ManipulatorSubsystem extends SubsystemBase {
   }
 public void velocity(double velo){
  spinTop.set(ControlMode.Velocity,velo);
+ spinTop.get();
  spinBot.set(ControlMode.Velocity,velo + 200);
 
 }
@@ -110,4 +120,15 @@ public void velocity(double velo){
   public DoubleSolenoid.Value getManipUp(){
     return doubleNoid.get();
   }
+
+  public boolean getTopReady(double target){
+    if(spinTop.getSelectedSensorVelocity() == target){return true;}
+    else{return false;}
+  }
+
+  public boolean getBotReady(double target){
+    if(spinBot.getSelectedSensorVelocity() == target){return true;}
+    else{return false;}
+  }
+
 }
