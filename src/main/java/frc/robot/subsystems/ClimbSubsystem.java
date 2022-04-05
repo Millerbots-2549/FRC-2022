@@ -53,24 +53,27 @@ public class ClimbSubsystem extends SubsystemBase {
     climbSpin.set(0);
   }
 
-  public void climbExtendPiston(int choose){
-    switch (choose) {
-      case 1: climbPiston.set(Value.kForward);
-      case 2: climbPistonTwo.set(Value.kForward);
-    }
+  public void climbExtendPiston(){
+    climbPiston.set(Value.kForward);
+    // switch (choose) {
+    //   case 1: climbPiston.set(Value.kForward);
+    //   case 2: climbPistonTwo.set(Value.kForward);
+    // }
   }
 
-  public void climbRetractPiston(int choose){
-    switch (choose) {
-      case 1: climbPiston.set(Value.kReverse);
-      case 2: climbPistonTwo.set(Value.kReverse);
-    }
+  public void climbRetractPiston(){
+    climbPiston.set(Value.kReverse);
+    // switch (choose) {
+    //   case 1: climbPiston.set(Value.kReverse);
+    //   case 2: climbPistonTwo.set(Value.kReverse);
+    // }
   }
   
-  public void climbPistonOff(int choose){
-    switch (choose) {
-      case 1: climbPiston.set(Value.kOff);
-      case 2: climbPistonTwo.set(Value.kOff);
-    }
+  public void climbPistonOff(){
+    climbPiston.set(Value.kOff);
+    // switch (choose) {
+    //   case 1: climbPiston.set(Value.kOff);
+    //   case 2: climbPistonTwo.set(Value.kOff);
+    // }
   }
 }
