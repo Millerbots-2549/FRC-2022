@@ -16,6 +16,8 @@ public class VisionSubsystem extends SubsystemBase {
   public static NetworkTableEntry tx;
   public static NetworkTableEntry ty;
   public static NetworkTableEntry ta;
+  public static NetworkTableEntry ts;
+
 
   public VisionSubsystem() {}
 
@@ -25,14 +27,17 @@ public class VisionSubsystem extends SubsystemBase {
     tx = table.getEntry("tx");
     ty = table.getEntry("ty");
     ta = table.getEntry("ta");
+    ts = table.getEntry("ts");
 
 
     double x = tx.getDouble(0.0);
     double y = ty.getDouble(0.0);
+    double angle = ts.getDouble(0.0);
     double area = ta.getDouble(0.0);
 
     SmartDashboard.putNumber("LimelightX", x);
     SmartDashboard.putNumber("LimelightY", y);
+    SmartDashboard.putNumber("Target Angle", angle);
     SmartDashboard.putNumber("LimelightArea", area);
   }
 }
