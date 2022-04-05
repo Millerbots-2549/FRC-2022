@@ -86,8 +86,8 @@ public class RobotContainer
         // mA.toggleWhenPressed(new RaiseManip());
         dA.toggleWhenPressed(new RaiseManip());
             // controls the two pistons on the climb apendage with the same command
-        dSELECT.toggleWhenPressed(new ClimbPiston(1));
-        dSTART.toggleWhenPressed(new ClimbPiston(2));
+        dSELECT.toggleWhenPressed(new ClimbPiston());
+        dSTART.toggleWhenPressed(new ClimbPiston());
         //while binds
             //two commands that spin the shooting churro in and out
         mRB.whileHeld(new ShootCommand());
