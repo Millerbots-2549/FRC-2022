@@ -102,8 +102,8 @@ public class RobotContainer
         mLEFT.whileHeld(new ShootLeft());
             //depricated commands that raised and lowered old climb
             //TODO:update this to work with the new climb system
-        dUP.whileHeld(new ClimbExtend());
-        dDOWN.whileHeld(new ClimbRetract());
+        dDOWN.whileHeld(new ClimbExtend());
+        dUP.whileHeld(new ClimbRetract());
             //controls the motors that spin the climb system
         dLB.whileHeld(new ClimbSpinBck());
         dRB.whileHeld(new ClimbSpinFwd());
