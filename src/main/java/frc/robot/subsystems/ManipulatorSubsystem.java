@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
+import java.lang.annotation.Target;
 import java.security.CodeSigner;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
@@ -36,17 +37,18 @@ public class ManipulatorSubsystem extends SubsystemBase {
     //shooter motors
     spinTop = new WPI_TalonFX(Constants.TOPMANIPRIGHT);
     spinTop.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor);
-    spinTop.config_kP(0,.08999276);
-    spinTop.config_kF(0,0.0446200371);
-    spinTop.config_kD(0,0.09999991);
+    spinTop.config_kP(0,0.09);
+    spinTop.config_kF(0,0.04589027);
+    spinTop.config_kD(0,4.2);
     spinTop.config_kI(0,0);
     shoot = new WPI_TalonSRX(Constants.SHOOTER);
     spinBot = new WPI_TalonFX(Constants.BOTMANIP);
     spinBot.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor);
-    spinBot.config_kP(0,.08999276);
-    spinBot.config_kF(0,0.0446200371);
-    spinBot.config_kD(0,0.09999991);
+    spinBot.config_kP(0,0.09);
+    spinBot.config_kF(0,0.04589027);
+    spinBot.config_kD(0,4.2);
     spinBot.config_kI(0,0);
+    //spinBot.follow(spinTop);
 
     // noid = new Solenoid(PneumaticsModuleType.CTREPCM, Constants.SINGLENOID);
     doubleNoid = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, Constants.DOUBLENOIDFRNT, Constants.DOUBLENOIDBACK);
@@ -77,7 +79,7 @@ public class ManipulatorSubsystem extends SubsystemBase {
 public void velocity(double velo){
  spinTop.set(ControlMode.Velocity,velo);
  spinTop.get();
- spinBot.set(ControlMode.Velocity,velo + 200);
+ spinBot.set(ControlMode.Velocity,velo);
 
 }
   //raise and lower manipulator methods
@@ -122,12 +124,12 @@ public void velocity(double velo){
   }
 
   public boolean getTopReady(double target){
-    if(spinTop.getSelectedSensorVelocity() == target){return true;}
+    if((spinTop.getSelectedSensorVelocity() == target)) {return true;}
     else{return false;}
   }
 
   public boolean getBotReady(double target){
-    if(spinBot.getSelectedSensorVelocity() == target){return true;}
+    if((spinBot.getSelectedSensorVelocity() == target)) {return true;}
     else{return false;}
   }
 
