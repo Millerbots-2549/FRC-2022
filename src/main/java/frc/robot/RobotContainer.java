@@ -37,6 +37,7 @@ public class RobotContainer
    //dCtrl = drive controller
     double getAxis = dCtrl.getRawAxis(Constants.DRIVEAXIS);
     JoystickButton dA = new JoystickButton(dCtrl, 1);
+    JoystickButton dX= new JoystickButton(dCtrl,3);
     JoystickButton dY = new JoystickButton(dCtrl, 4);
     JoystickButton dSELECT = new JoystickButton(dCtrl, 7);
     JoystickButton dSTART = new JoystickButton(dCtrl, 8);
@@ -87,7 +88,7 @@ public class RobotContainer
         dA.toggleWhenPressed(new RaiseManip());
             // controls the two pistons on the climb apendage with the same command
         dSELECT.toggleWhenPressed(new ClimbPiston());
-        dSTART.toggleWhenPressed(new ClimbPiston());
+        dX.toggleWhenPressed(new ClimbPiston());
         //while binds
             //two commands that spin the shooting churro in and out
         mRB.whileHeld(new ShootCommand());
