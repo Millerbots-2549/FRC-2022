@@ -21,7 +21,7 @@ public class ShootOneHigh extends CommandBase {
   @Override
   public void execute() {
 
-    Robot.manip.velocity(14500);
+    Robot.manip.velocity(15400);
   
 
   

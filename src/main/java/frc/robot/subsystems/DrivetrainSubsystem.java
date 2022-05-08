@@ -48,7 +48,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
         drivetrain.arcadeDrive(RobotContainer.dCtrl.getLeftX() * 0.7, -RobotContainer.dCtrl.getLeftY() * 0.7);
       }
       else{
-        drivetrain.arcadeDrive(RobotContainer.dCtrl.getLeftX() * 0.9, -RobotContainer.dCtrl.getLeftY() * 0.9);
+        drivetrain.arcadeDrive(RobotContainer.dCtrl.getLeftX() * 1, -RobotContainer.dCtrl.getLeftY() * 1);
       }
     }
 

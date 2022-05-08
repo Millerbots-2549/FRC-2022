@@ -37,6 +37,7 @@ public class RobotContainer
    //dCtrl = drive controller
     double getAxis = dCtrl.getRawAxis(Constants.DRIVEAXIS);
     JoystickButton dA = new JoystickButton(dCtrl, 1);
+    JoystickButton dB = new JoystickButton(dCtrl, 2);
     JoystickButton dX= new JoystickButton(dCtrl,3);
     JoystickButton dY = new JoystickButton(dCtrl, 4);
     JoystickButton dSELECT = new JoystickButton(dCtrl, 7);
@@ -98,9 +99,13 @@ public class RobotContainer
         mX.whileHeld(new ShootOneLow());
         mB.whileHeld(new ShootTwoLow());
         mY.whileHeld(new ShootOneHigh());
+        dB.whileHeld(new ShootTwoLow());
+        dY.whileHeld(new ShootOneHigh());
             //controls the pistons that push balls into the shooting mechanism
         mRIGHT.whileHeld(new ShootRight());
         mLEFT.whileHeld(new ShootLeft());
+        dRIGHT.whileHeld(new ShootRight());
+        dLEFT.whileHeld(new ShootLeft());
             //depricated commands that raised and lowered old climb
             //TODO:update this to work with the new climb system
         dDOWN.whileHeld(new ClimbExtend());
