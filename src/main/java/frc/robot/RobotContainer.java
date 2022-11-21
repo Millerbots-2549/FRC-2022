@@ -7,6 +7,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.smartdashboard.*;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
@@ -17,7 +18,7 @@ import frc.robot.commands.manip.shootpresets.ShootTwoLow;
 import frc.robot.commands.manip.shootsolenoid.ShootLeft;
 import frc.robot.commands.manip.shootsolenoid.ShootRight;
 import frc.robot.commands.drive.*;
-import frc.robot.commands.auto.AutoComplex;
+import frc.robot.commands.auto.*;
 import frc.robot.commands.climb.*;
 import frc.robot.commands.climb.climbspinner.ClimbSpinBck;
 import frc.robot.commands.climb.climbspinner.ClimbSpinFwd;
@@ -62,6 +63,13 @@ public class RobotContainer
     POVButton mDOWN = new POVButton(mCtrl, 0);
     POVButton mLEFT = new POVButton(mCtrl, 270);
 
+    // Auto commands
+    private final Command m_wait = new AutoWait();
+    private final Command m_getout = new AutoGetOuttaThere();
+    private final Command m_complex = new AutoComplex();
+
+    // Chooser for auto commands
+    SendableChooser<Command> m_chooser = new SendableChooser<>();
 
     /** The container for the robot. Contains subsystems, OI devices, and commands. */
     public RobotContainer()
@@ -72,6 +80,12 @@ public class RobotContainer
 
         // do not delete
         configureButtonBindings();
+
+        m_chooser.setDefaultOption("Shooting Auto", m_complex);
+        m_chooser.addOption("Simple Auto", m_getout);
+        m_chooser.addOption("Delayed Auto", m_wait);
+
+        SmartDashboard.putData(m_chooser);
     }
     
     
@@ -121,6 +135,6 @@ public class RobotContainer
      * @return the command to run in autonomous
      */
     public Command getAutonomousCommand(){
-        return(new AutoComplex());
+        return m_chooser.getSelected();
     }
 }

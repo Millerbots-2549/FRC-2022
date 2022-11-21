@@ -4,9 +4,12 @@
 
 package frc.robot.commands.auto;
 
+import edu.wpi.first.wpilibj2.command.ParallelRaceGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
+import frc.robot.commands.manip.shootpresets.ShootTwoLow;
+import frc.robot.commands.manip.shootsolenoid.*;
 import frc.robot.Constants;
-import frc.robot.commands.manip.RaiseManip;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
@@ -17,8 +20,14 @@ public class AutoComplex extends SequentialCommandGroup {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-      new AutoShoot(0).withTimeout(2),
-      new AutoShoot(1).withTimeout(1),
+      new ParallelRaceGroup(
+        new ShootTwoLow(), 
+        new SequentialCommandGroup(
+          new WaitCommand(1.5),
+          new ShootLeft().withTimeout(.5),
+          new ShootRight().withTimeout(.5)
+        )
+      ),
       new AutoMove(Constants.DRIVESPEED).withTimeout(Constants.DRIVETIME) 
       // new AutoIntake()
     );

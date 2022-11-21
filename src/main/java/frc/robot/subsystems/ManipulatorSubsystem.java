@@ -11,15 +11,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
-import java.lang.annotation.Target;
-import java.security.CodeSigner;
-
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
-import com.fasterxml.jackson.databind.node.BooleanNode;
 
 public class ManipulatorSubsystem extends SubsystemBase {
 
@@ -66,12 +61,15 @@ public class ManipulatorSubsystem extends SubsystemBase {
 
 
   //shooter motor methods
+  /*
   public void shootStart(double d){
     shoot.set(d);
   }
   public void shootEnd(){
     shoot.set(0);
   }
+  */
+  
   public void spin(double speed){
     spinTop.set(speed);
     spinBot.set(speed);

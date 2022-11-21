@@ -45,10 +45,10 @@ public class DrivetrainSubsystem extends SubsystemBase {
 
     public void driveTeleop(){
       if(RobotContainer.dCtrl.getRightTriggerAxis() > .3) {
-        drivetrain.arcadeDrive(RobotContainer.dCtrl.getLeftX() * 0.7, -RobotContainer.dCtrl.getLeftY() * 0.7);
+        drivetrain.tankDrive(RobotContainer.dCtrl.getLeftY() * 0.7, RobotContainer.dCtrl.getRightY() * 0.7);
       }
       else{
-        drivetrain.arcadeDrive(RobotContainer.dCtrl.getLeftX() * 1, -RobotContainer.dCtrl.getLeftY() * 1);
+        drivetrain.tankDrive(RobotContainer.dCtrl.getLeftY() * 1, RobotContainer.dCtrl.getRightY() * 1);
       }
     }
 
